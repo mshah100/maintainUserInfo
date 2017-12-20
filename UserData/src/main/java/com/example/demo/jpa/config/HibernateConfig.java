@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.example.demo.jpa.config;
 
 import javax.persistence.EntityManagerFactory;
 

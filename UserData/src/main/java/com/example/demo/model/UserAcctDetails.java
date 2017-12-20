@@ -2,24 +2,31 @@ package com.example.demo.model;
 
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Table; 
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size; 
 
 @Entity
 @Table(name="UserAcctDetails")  
 public class UserAcctDetails {
 	
+	@EmbeddedId
+	private UserAccountIdentity userAccountIdentity;
+	
 	@Column
-	private String userName;
-	@Column
+	@NotNull
+    @Size(max = 15)
 	private String password;
-	@Column
-	private String acctName;
-	public String getUserName() {
-		return userName;
+	
+	public UserAcctDetails(UserAccountIdentity userAccountIdentity, String password) {
+		super();
+		this.userAccountIdentity = userAccountIdentity;
+		this.password = password;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public UserAcctDetails() {
+		super();
 	}
 	public String getPassword() {
 		return password;
@@ -27,11 +34,12 @@ public class UserAcctDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getAcctName() {
-		return acctName;
+	public UserAccountIdentity getUserAccountIdentity() {
+		return userAccountIdentity;
 	}
-	public void setAcctName(String acctName) {
-		this.acctName = acctName;
+	public void setUserAccountIdentity(UserAccountIdentity userAccountIdentity) {
+		this.userAccountIdentity = userAccountIdentity;
 	}
+
 
 }

@@ -6,36 +6,27 @@ import io.katharsis.resource.annotations.JsonApiResource;
 @JsonApiResource(type = "loginDetails")
 public class Login {
 	@JsonApiId
-	private long id;
-
-	private String userName;
-
-	private String password;
+	private LoginIdentity loginIdentity;
 
 	private String account;
 
-	public long getId() {
-		return id;
+	public Login(LoginIdentity loginIdentity, String account) {
+		super();
+		this.loginIdentity = loginIdentity;
+		this.account = account;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public Login(String acct) {
+		super();
+		account = acct;
+	}
+	
+	public LoginIdentity getLoginIdentity() {
+		return loginIdentity;
 	}
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setLoginIdentity(LoginIdentity loginIdentity) {
+		this.loginIdentity = loginIdentity;
 	}
 
 	public String getAccount() {
